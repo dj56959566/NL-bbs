@@ -13,3 +13,5 @@ TG_BOT_TOKEN 或 TG_BOT_TOKEN_1	第 1 个账号 Bot Token
 TG_USER_ID 或 TG_USER_ID_1	第 1 个账号 Telegram 用户 ID
 
 TG_PROXY（可选）	Telegram 推送代理设置
+
+依此类推，可添加 _2, _3, _4 等账号组。支持混合使用统一 Token 或各账号独立 Bot。
