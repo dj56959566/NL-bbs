@@ -2,6 +2,7 @@ nodeloc青龙脚本
 根据ryty1的loon脚本修改得来，感谢
 
 参数：
+<img width="502" height="306" alt="image" src="https://github.com/user-attachments/assets/7d827016-251a-4528-9fee-2080ce2ada5a" />
 
 NODELOC_COOKIE_1	第 1 个账号 Cookie
 
