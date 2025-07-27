@@ -1,10 +1,10 @@
-name: Sign In to nodeloc.cc
+name: NodeLoc SignIn
 
 on:
   schedule:
     # 每天 UTC 1 点（即北京时间 9 点）
     - cron: '0 1 * * *'
-  workflow_dispatch:  # 可以手动触发工作流
+  workflow_dispatch:  # 支持手动触发工作流
 
 jobs:
   signin:
@@ -14,19 +14,29 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
+    - name: Set up environment variables
+      run: |
+        echo "NODELOC_COOKIE_1=${{ secrets.NODELOC_COOKIE_1 }}" >> $GITHUB_ENV
+        echo "NODELOC_CSRF_1=${{ secrets.NODELOC_CSRF_1 }}" >> $GITHUB_ENV
+        echo "TG_BOT_TOKEN=${{ secrets.TG_BOT_TOKEN }}" >> $GITHUB_ENV
+        echo "TG_USER_ID=${{ secrets.TG_USER_ID }}" >> $GITHUB_ENV
+        echo "TG_PROXY=${{ secrets.TG_PROXY }}" >> $GITHUB_ENV
+
     - name: Sign in to nodeloc.cc
       run: |
-        # 使用 curl 模拟签到请求
         curl -X POST https://nodeloc.cc/signin \
           -H "Content-Type: application/x-www-form-urlencoded" \
-          -d "username=$USER_NAME&password=$PASSWORD"
+          -H "Cookie: ${NODELOC_COOKIE_1}" \
+          -H "X-CSRF-Token: ${NODELOC_CSRF_1}" \
+          -d "tgBotToken=${TG_BOT_TOKEN}&tgUserId=${TG_USER_ID}&tgProxy=${TG_PROXY}"
       
-    - name: Commit and push the result (optional)
+    - name: Notify result via Telegram
       run: |
-        # 在成功签到后，你也可以选择提交签到结果到 GitHub（如记录签到日志等）
-        echo "签到成功 $(date)" >> signin_log.txt
-        git config --global user.name "GitHub Actions"
-        git config --global user.email "actions@github.com"
-        git add signin_log.txt
-        git commit -m "Update signin log"
-        git push
+        if [ $? -eq 0 ]; then
+          curl -X POST "https://api.telegram.org/bot${TG_BOT_TOKEN}/sendMessage" \
+            -d "chat_id=${TG_USER_ID}" \
+            -d "text=NodeLoc 签到成功！"
+        else
+          curl -X POST "https://api.telegram.org/bot${TG_BOT_TOKEN}/sendMessage" \
+            -d "chat_id=${TG_USER_ID}" \
+            -d "text=NodeLoc 签到失败，请检查日志！"
