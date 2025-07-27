@@ -1,7 +1,7 @@
 nodeloc青龙脚本
 鸣谢:s根据SerokVip  ryty1的loon脚本修改得来，再经本人在-土韭青龙脚本上diy.
 
-## 现已在此基础上用github工作流运行 自行签到！
+## 现已在此基础上用github工作流运行 自行签到！喜欢的小伙伴麻烦给我点下小星星！
 
 参数：
 <img width="502" height="306" alt="image" src="https://github.com/user-attachments/assets/7d827016-251a-4528-9fee-2080ce2ada5a" />
