@@ -1,6 +1,8 @@
 nodeloc青龙脚本
 根据ryty1的loon脚本修改得来，感谢
 
+## 现已在此基础上用github工作流运行
+
 参数：
 <img width="502" height="306" alt="image" src="https://github.com/user-attachments/assets/7d827016-251a-4528-9fee-2080ce2ada5a" />
 
