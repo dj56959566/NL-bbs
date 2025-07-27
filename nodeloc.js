@@ -51,7 +51,7 @@ async function checkin(account, retryCount = MAX_RETRY) {
     let msg = "";
 
     if (data.success === true) {
-      title += "✅ 签到成功";
+      title += "✅ 恭喜你签到成功";
       const energy = data.message?.match(/(\\d+)\\s*个能量/)?.[1] || "10";
       msg = `🗓️ 获得 ${energy} ⚡能量`;
     } else if (data.success === false) {
