@@ -43,7 +43,9 @@ cron: '0 1 * * *' 表示每天 UTC 时间 1 点（即北京时间 9 点）执行
 workflow_dispatch 允许你手动触发工作流。
 
 # CF自动签到NL WKS
+
 1.复制index.js里面代码去CF
+
 2.设置变量值 
 你需要先准备好以下变量（从浏览器中获取）：
 变量名	描述
@@ -51,5 +53,6 @@ NODELOC_COOKIE_1	NodeLoc 登录后浏览器的 Cookie
 NODELOC_CSRF_1	浏览器页面中的 CSRF Token
 TG_BOT_TOKEN	Telegram Bot 的 Token
 TG_USER_ID	你的 Telegram 用户 ID
+
 3.表达式说明：
 0 1 * * * = 每天 UTC 时间 01:00 = 北京时间 09:00
