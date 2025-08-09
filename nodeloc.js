@@ -33,11 +33,11 @@ async function checkin(account, retryCount = MAX_RETRY) {
   const { COOKIE, CSRF, TG_TOKEN, TG_USER_ID, TG_PROXY, ALIAS } = account;
   console.log(`\n🧑 账号 [${ALIAS}] 开始签到，剩余重试次数：${retryCount}`);
   try {
-    const res = await axios.post("https://nodeloc.cc/checkin", {}, {
+    const res = await axios.post("https://nodeloc.com/checkin", {}, {
       headers: {
         cookie: COOKIE,
-        origin: "https://nodeloc.cc",
-        referer: "https://nodeloc.cc/latest",
+        origin: "https://nodeloc.com",
+        referer: "https://nodeloc.com/latest",
         "user-agent": "Mozilla/5.0",
         "x-csrf-token": CSRF,
         "x-requested-with": "XMLHttpRequest",
