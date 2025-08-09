@@ -12,12 +12,12 @@ async function sendTG(title, message, TG_TOKEN, TG_USER_ID) {
 }
 async function checkin(acc, retry = MAX_RETRY) {
   try {
-    const res = await fetch("https://nodeloc.cc/checkin", {
+    const res = await fetch("https://nodeloc.com/checkin", {
       method: "POST",
       headers: {
         cookie: acc.COOKIE,
-        origin: "https://nodeloc.cc",
-        referer: "https://nodeloc.cc/latest",
+        origin: "https://nodeloc.com",
+        referer: "https://nodeloc.com/latest",
         "user-agent": "Mozilla/5.0",
         "x-csrf-token": acc.CSRF,
         "x-requested-with": "XMLHttpRequest",
